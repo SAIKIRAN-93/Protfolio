@@ -1,15 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('#sidebar ul li a');
-    const welcomeMessage = document.getElementById('welcome-message');
-    welcomeMessage.classList.add('show');
-    
-    setTimeout(() => {
-        welcomeMessage.classList.remove('show');
-    }, 3000);
-
-    // Create floating SVGs
-    createFloatingSVGs();
     
     // Split section titles into floating letters
     sections.forEach(section => {
@@ -170,35 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
             fishContainer.appendChild(fish);
         }
     }
-    // Function to create floating SVGs
-    function createFloatingSVGs() {
-        const svgContainer = document.getElementById('floating-svgs');
-        const svgShapes = [
-            '<circle cx="10" cy="10" r="10" fill="#3498db" />',
-            '<rect width="20" height="20" fill="#e74c3c" />',
-            '<polygon points="10,0 0,20 20,20" fill="#2ecc71" />',
-            '<path d="M10 0 L0 20 L20 20 Z" fill="#f39c12" />'
-        ];
-
-        for (let i = 0; i < 10; i++) {
-            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('class', 'floating-svg');
-            svg.setAttribute('width', '40');
-            svg.setAttribute('height', '40');
-            svg.setAttribute('viewBox', '0 0 20 20');
-            
-            const randomShape = svgShapes[Math.floor(Math.random() * svgShapes.length)];
-            svg.innerHTML = randomShape;
-
-            svg.style.left = `${Math.random() * 100}%`;
-            svg.style.top = `${Math.random() * 100}%`;
-            svg.style.animationDuration = `${15 + Math.random() * 15}s`;
-            svg.style.animationDelay = `${Math.random() * 5}s`;
-
-            svgContainer.appendChild(svg);
-        }
-    }
-
 
     // Call functions to create underwater elements
     createBubbles();
