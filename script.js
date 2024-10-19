@@ -18,6 +18,33 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+     // Welcome message animation
+    const welcomeMessage = document.getElementById('welcome-message');
+    welcomeMessage.classList.add('show');
+    
+    setTimeout(() => {
+        welcomeMessage.classList.remove('show');
+    }, 3000);
+
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('#sidebar ul li a');
+    
+    // Split section titles into floating letters
+    sections.forEach(section => {
+        const title = section.querySelector('h2');
+        if (title) {
+            const letters = title.textContent.split('');
+            title.innerHTML = '';
+            letters.forEach(letter => {
+                const span = document.createElement('span');
+                span.className = 'floating-letter';
+                span.textContent = letter;
+                span.style.setProperty('--float-x', Math.random() * 2 - 1);
+                span.style.setProperty('--float-y', Math.random() * 2 - 1);
+                title.appendChild(span);
+            });
+        }
+    });
 
     // Intersection Observer for section visibility
     const observer = new IntersectionObserver((entries) => {
