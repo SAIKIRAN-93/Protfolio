@@ -277,3 +277,28 @@ footer {
         left: 0;
     }
 }
+.section h2 {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.floating-letter {
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.floating-letter.float {
+    transform: translate(
+        calc(var(--float-x) * 100px),
+        calc(var(--float-y) * 100px)
+    );
+    opacity: 0.2;
+}
+
+.section.active h2 .floating-letter {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+
