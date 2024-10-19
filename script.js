@@ -2,21 +2,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('#sidebar ul li a');
     
+    // Split section titles into floating letters
+    sections.forEach(section => {
+        const title = section.querySelector('h2');
+        if (title) {
+            const letters = title.textContent.split('');
+            title.innerHTML = '';
+            letters.forEach(letter => {
+                const span = document.createElement('span');
+                span.className = 'floating-letter';
+                span.textContent = letter;
+                span.style.setProperty('--float-x', Math.random() * 2 - 1);
+                span.style.setProperty('--float-y', Math.random() * 2 - 1);
+                title.appendChild(span);
+            });
+        }
+    });
+
     // Intersection Observer for section visibility
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('visible', 'active');
                 updateActiveNavLink(entry.target.id);
                 if (entry.target.id === 'skills') {
                     animateSkills();
                 }
+            } else {
+                entry.target.classList.remove('active');
             }
         });
     }, { threshold: 0.5 });
 
     sections.forEach(section => {
         observer.observe(section);
+    });
+
+    // Floating letter animation on scroll
+    window.addEventListener('scroll', () => {
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const letters = section.querySelectorAll('.floating-letter');
+            const scrollProgress = 1 - Math.max(0, Math.min(1, (rect.top + rect.height / 2) / window.innerHeight));
+            
+            letters.forEach(letter => {
+                if (scrollProgress > 0 && scrollProgress < 1) {
+                    letter.classList.add('float');
+                } else {
+                    letter.classList.remove('float');
+                }
+            });
+        });
     });
 
     // Smooth scrolling for navigation links
