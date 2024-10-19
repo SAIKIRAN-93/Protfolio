@@ -3,6 +3,7 @@
     --secondary-color: #2c3e50;
     --text-color: #333;
     --bg-color: #f4f4f4;
+    --accent-color: #e74c3c;
 }
 
 * {
@@ -29,6 +30,7 @@ body {
     left: 0;
     top: 0;
     overflow-y: auto;
+    transition: all 0.3s ease;
 }
 
 .profile {
@@ -43,6 +45,11 @@ body {
     object-fit: cover;
     margin-bottom: 1rem;
     border: 3px solid white;
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
 }
 
 #sidebar ul {
@@ -58,10 +65,22 @@ body {
     text-decoration: none;
     font-size: 1.1rem;
     transition: color 0.3s ease;
+    position: relative;
 }
 
-#sidebar ul li a:hover {
-    color: var(--primary-color);
+#sidebar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+#sidebar ul li a:hover::after {
+    width: 100%;
 }
 
 main {
@@ -86,6 +105,18 @@ h2 {
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-size: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
 }
 
 .timeline {
@@ -118,6 +149,11 @@ h2 {
     height: 20px;
     border-radius: 50%;
     background-color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover::before {
+    transform: scale(1.2);
 }
 
 .skills-container {
@@ -133,6 +169,27 @@ h2 {
 .skill-list {
     list-style-type: none;
     padding-left: 0;
+    position: relative;
+}
+
+.skill-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--accent-color);
+    animation: threadAnimation 5s infinite alternate;
+}
+
+@keyframes threadAnimation {
+    0% {
+        height: 0%;
+    }
+    100% {
+        height: 100%;
+    }
 }
 
 .skill-list li {
@@ -143,6 +200,18 @@ h2 {
     border-radius: 20px;
     display: inline-block;
     margin-right: 0.5rem;
+    position: relative;
+    left: 10px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: skillAppear 0.5s forwards;
+}
+
+@keyframes skillAppear {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .experience-item, .project-item {
@@ -151,6 +220,12 @@ h2 {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover, .project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .certification-list {
@@ -164,6 +239,11 @@ h2 {
     margin-bottom: 1rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.certification-list li:hover {
+    transform: scale(1.03);
 }
 
 footer {
@@ -181,20 +261,17 @@ footer {
     body {
         flex-direction: column;
     }
-
     #sidebar {
         width: 100%;
         height: auto;
         position: static;
         padding: 1rem;
     }
-
     main {
         margin-left: 0;
         width: 100%;
         padding: 1rem;
     }
-
     footer {
         position: static;
         left: 0;
