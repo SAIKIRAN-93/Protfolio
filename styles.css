@@ -415,7 +415,7 @@ footer {
 
 .section.active h2 .floating-letter {
     transform: translate(0, 0);
-    opacity: 1;
+    opacity: 2;
 }
 
 /* Floating particles effect */
@@ -427,6 +427,7 @@ footer {
     height: 100%;
     z-index: -1;
     overflow: hidden;
+    opacity: 2;
 }
 
 .particle {
