@@ -31,11 +31,13 @@ body {
     top: 0;
     overflow-y: auto;
     transition: all 0.3s ease;
+    z-index: 1000;
 }
 
 .profile {
     text-align: center;
     margin-bottom: 2rem;
+    position: relative;
 }
 
 .profile-img {
@@ -45,11 +47,34 @@ body {
     object-fit: cover;
     margin-bottom: 1rem;
     border: 3px solid white;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-img:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.profile h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards 0.5s;
+}
+
+.profile p {
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards 0.7s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #sidebar ul {
@@ -58,6 +83,23 @@ body {
 
 #sidebar ul li {
     margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: fadeInLeft 0.5s forwards;
+}
+
+#sidebar ul li:nth-child(1) { animation-delay: 0.8s; }
+#sidebar ul li:nth-child(2) { animation-delay: 0.9s; }
+#sidebar ul li:nth-child(3) { animation-delay: 1.0s; }
+#sidebar ul li:nth-child(4) { animation-delay: 1.1s; }
+#sidebar ul li:nth-child(5) { animation-delay: 1.2s; }
+#sidebar ul li:nth-child(6) { animation-delay: 1.3s; }
+
+@keyframes fadeInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 #sidebar ul li a {
@@ -66,21 +108,23 @@ body {
     font-size: 1.1rem;
     transition: color 0.3s ease;
     position: relative;
+    display: inline-block;
 }
 
 #sidebar ul li a::after {
     content: '';
     position: absolute;
-    width: 0;
+    width: 100%;
     height: 2px;
     bottom: -5px;
     left: 0;
     background-color: var(--primary-color);
-    transition: width 0.3s ease;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 #sidebar ul li a:hover::after {
-    width: 100%;
+    transform: scaleX(1);
 }
 
 main {
@@ -117,6 +161,12 @@ h2::after {
     bottom: -5px;
     left: 0;
     background-color: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.section.visible h2::after {
+    transform: scaleX(1);
 }
 
 .timeline {
@@ -132,12 +182,27 @@ h2::after {
     bottom: 0;
     width: 2px;
     background-color: var(--primary-color);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 1s ease;
+}
+
+.section.visible .timeline::before {
+    transform: scaleY(1);
 }
 
 .timeline-item {
     position: relative;
     margin-bottom: 2rem;
     padding-left: 20px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section.visible .timeline-item {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .timeline-item::before {
@@ -240,6 +305,19 @@ h2::after {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.section.visible .certification-list li {
+    animation: certAppear 0.5s forwards;
+}
+
+@keyframes certAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .certification-list li:hover {
@@ -255,6 +333,24 @@ footer {
     bottom: 0;
     left: 250px;
     right: 0;
+}
+
+.floating-letter {
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.floating-letter.float {
+    transform: translate(
+        calc(var(--float-x) * 100px),
+        calc(var(--float-y) * 100px)
+    );
+    opacity: 0.2;
+}
+
+.section.active h2 .floating-letter {
+    transform: translate(0, 0);
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -277,28 +373,3 @@ footer {
         left: 0;
     }
 }
-.section h2 {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-}
-
-.floating-letter {
-    display: inline-block;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.floating-letter.float {
-    transform: translate(
-        calc(var(--float-x) * 100px),
-        calc(var(--float-y) * 100px)
-    );
-    opacity: 0.2;
-}
-
-.section.active h2 .floating-letter {
-    transform: translate(0, 0);
-    opacity: 1;
-}
-
-
