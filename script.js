@@ -18,33 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-     // Welcome message animation
-    const welcomeMessage = document.getElementById('welcome-message');
-    welcomeMessage.classList.add('show');
-    
-    setTimeout(() => {
-        welcomeMessage.classList.remove('show');
-    }, 3000);
-
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('#sidebar ul li a');
-    
-    // Split section titles into floating letters
-    sections.forEach(section => {
-        const title = section.querySelector('h2');
-        if (title) {
-            const letters = title.textContent.split('');
-            title.innerHTML = '';
-            letters.forEach(letter => {
-                const span = document.createElement('span');
-                span.className = 'floating-letter';
-                span.textContent = letter;
-                span.style.setProperty('--float-x', Math.random() * 2 - 1);
-                span.style.setProperty('--float-y', Math.random() * 2 - 1);
-                title.appendChild(span);
-            });
-        }
-    });
 
     // Intersection Observer for section visibility
     const observer = new IntersectionObserver((entries) => {
@@ -64,36 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         observer.observe(section);
     });
-
-
-     // Create bubbles
-    function createBubbles() {
-        const bubblesContainer = document.getElementById('bubbles');
-        for (let i = 0; i < 50; i++) {
-            const bubble = document.createElement('div');
-            bubble.classList.add('bubble');
-            bubble.style.left = `${Math.random() * 100}%`;
-            bubble.style.width = `${Math.random() * 20 + 10}px`;
-            bubble.style.height = bubble.style.width;
-            bubble.style.animationDuration = `${Math.random() * 5 + 5}s`;
-            bubble.style.animationDelay = `${Math.random() * 5}s`;
-            bubblesContainer.appendChild(bubble);
-        }
-    }
-
-    // Create fish
-    function createFish() {
-        const fishContainer = document.getElementById('fish-container');
-        for (let i = 0; i < 5; i++) {
-            const fish = document.createElement('div');
-            fish.classList.add('fish');
-            fish.style.top = `${Math.random() * 80 + 10}%`;
-            fish.style.animationDuration = `${Math.random() * 10 + 15}s`;
-            fish.style.animationDelay = `${Math.random() * 5}s`;
-            fishContainer.appendChild(fish);
-        }
-    }
-
 
     // Floating letter animation on scroll
     window.addEventListener('scroll', () => {
