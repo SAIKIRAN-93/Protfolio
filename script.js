@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.remove('active');
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.2 });
 
     sections.forEach(section => {
         observer.observe(section);
@@ -96,21 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     typeWriter();
 
-    // Parallax effect for profile image
-    const profileImg = document.querySelector('.profile-img');
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.pageYOffset;
-        profileImg.style.transform = `translateY(${scrollPosition * 0.1}px)`;
-    });
-
     // Animate timeline items
     const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            item.style.transform = 'scale(1.05)';
-        });
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'scale(1)';
+    timelineItems.forEach((item, index) => {
+        item.style.transitionDelay = `${index * 200}ms`;
+    });
+
+    // Animate certification items
+    const certItems = document.querySelectorAll('.certification-list li');
+    certItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 200}ms`;
+    });
+
+    // Add scroll-triggered animations
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
+                section.classList.add('visible');
+            }
         });
     });
 });
