@@ -1,13 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('#sidebar ul li a');
-
+    
     // Intersection Observer for section visibility
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 updateActiveNavLink(entry.target.id);
+                if (entry.target.id === 'skills') {
+                    animateSkills();
+                }
             }
         });
     }, { threshold: 0.5 });
@@ -36,15 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Skill bar animation
-    const skillBars = document.querySelectorAll('.skill-bar');
-    skillBars.forEach(bar => {
-        const percentage = bar.getAttribute('data-percentage');
-        bar.style.width = '0%';
-        setTimeout(() => {
-            bar.style.width = percentage;
-        }, 500);
-    });
+    // Animate skills
+    function animateSkills() {
+        const skillItems = document.querySelectorAll('.skill-list li');
+        skillItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 100}ms`;
+        });
+    }
 
     // Typing effect for the introduction
     const introText = "A motivated individual with in-depth knowledge of languages and development tools...";
@@ -58,4 +59,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     typeWriter();
+
+    // Parallax effect for profile image
+    const profileImg = document.querySelector('.profile-img');
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        profileImg.style.transform = `translateY(${scrollPosition * 0.1}px)`;
+    });
+
+    // Animate timeline items
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'scale(1.05)';
+        });
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'scale(1)';
+        });
+    });
 });
