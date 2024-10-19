@@ -1,7 +1,3 @@
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('#sidebar ul li a');
@@ -122,4 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Create particles
+    function createParticles() {
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach(particle => {
+            const size = Math.random() * 5 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+        });
+    }
+
+    // Call the function when the page loads
+    createParticles();
 });
