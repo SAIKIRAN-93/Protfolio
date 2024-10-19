@@ -1,16 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('#sidebar ul li a');
-    const welcomeSection = document.getElementById('welcome');
-    
-    // Welcome section animation
-    setTimeout(() => {
-        welcomeSection.style.display = 'none';
-        document.body.style.overflow = 'visible';
-    }, 5000);  // Hide welcome section after 5 seconds
-
-
-
 
 
 
@@ -39,22 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Intersection Observer for section visibility
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.target.id !== 'welcome' && entry.isIntersecting) {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('visible', 'active');
                 updateActiveNavLink(entry.target.id);
                 if (entry.target.id === 'skills') {
                     animateSkills();
                 }
-            } else if (entry.target.id !== 'welcome') {
+            } else {
                 entry.target.classList.remove('active');
             }
         });
     }, { threshold: 0.2 });
 
     sections.forEach(section => {
-        if (section.id !== 'welcome') {
-            observer.observe(section);
-        }
+        observer.observe(section);
     });
 
     // Floating letter animation on scroll
