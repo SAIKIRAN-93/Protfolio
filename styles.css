@@ -402,7 +402,7 @@ footer {
 
 .floating-letter {
     display: inline-block;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 1.5s ease, opacity 0.8s ease;
 }
 
 .floating-letter.float {
@@ -441,7 +441,7 @@ footer {
         transform: translateY(0) rotate(0deg);
     }
     100% {
-        transform: translateY(-100vh) rotate(360deg);
+        transform: translateY(-200vh) rotate(360deg);
     }
 }
 
