@@ -3,23 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sai Kiran Annoju - Portfolio</title>
+    <title>Sai Kiran Annoju - Interactive Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-   
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <div id="particles-js"></div>
+    
+    <div class="underwater-bg">
+        <div id="bubbles"></div>
+        <div id="fish-container"></div>
     </div>
 
     <nav id="sidebar">
@@ -41,7 +34,7 @@
     <main>
         <section id="about" class="section">
             <h2>About Me</h2>
-            <p>A motivated individual with in-depth knowledge of languages and development tools, seeking a position in a growth-oriented company where I can use my skills to the advantage of the company while having the scope to develop my skills.</p>
+            <p id="about-text"></p>
             <div class="contact-info">
                 <p><strong>Phone:</strong> +919398884536</p>
                 <p><strong>Email:</strong> annojusaikiran@gmail.com</p>
@@ -79,7 +72,7 @@
             <div class="skills-container">
                 <div class="skill-category">
                     <h3>Technical Skills</h3>
-                    <ul class="skill-list">
+                    <ul class="skill-list" id="technical-skills">
                         <li>Python</li>
                         <li>HTML</li>
                         <li>CSS</li>
@@ -91,7 +84,7 @@
                 </div>
                 <div class="skill-category">
                     <h3>Soft Skills</h3>
-                    <ul class="skill-list">
+                    <ul class="skill-list" id="soft-skills">
                         <li>Communication</li>
                         <li>Problem-solving</li>
                         <li>Adaptability</li>
@@ -147,6 +140,7 @@
         <p>&copy; 2024 Sai Kiran Annoju. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
