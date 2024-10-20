@@ -2,6 +2,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('#sidebar ul li a');
     
+    // Particle.js configuration
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: '#ffffff' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
+
     // Split section titles into floating letters
     sections.forEach(section => {
         const title = section.querySelector('h2');
@@ -84,8 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Typing effect for the introduction
-    const introText = "A motivated individual with in-depth knowledge of languages and development tools...";
-    const introElement = document.querySelector('#about p');
+    const introText = "A motivated individual with in-depth knowledge of languages and development tools, seeking a position in a growth-oriented company where I can use my skills to the advantage of the company while having the scope to develop my skills.";
+    const introElement = document.querySelector('#about-text');
     let i = 0;
     function typeWriter() {
         if (i < introText.length) {
@@ -108,34 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
         item.style.animationDelay = `${index * 200}ms`;
     });
 
-    // Add scroll-triggered animations
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.pageYOffset;
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
-                section.classList.add('visible');
-            }
-        });
-    });
-
-    // Create particles
-    function createParticles() {
-        const particles = document.querySelectorAll('.particle');
-        particles.forEach(particle => {
-            const size = Math.random() * 5 + 2;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}vw`;
-            particle.style.top = `${Math.random() * 100}vh`;
-            particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-        });
-    }
-
-    // Call the function when the page loads
-    createParticles();
-     function createBubbles() {
+    // Create bubbles
+    function createBubbles() {
         const bubblesContainer = document.getElementById('bubbles');
         for (let i = 0; i < 50; i++) {
             const bubble = document.createElement('div');
@@ -165,4 +158,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call functions to create underwater elements
     createBubbles();
     createFish();
+
+    // Add parallax effect
+    window.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+        
+        document.querySelectorAll('.section').forEach(section => {
+            const moveX = (mouseX - 0.5) * 20;
+            const moveY = (mouseY - 0.5) * 20;
+            section.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    });
+
+    // Scroll-triggered animations
+    const scrollAnimElements = document.querySelectorAll('.scroll-anim');
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            } else {
+                entry.target.classList.remove('animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    scrollAnimElements.forEach(el => scrollObserver.observe(el));
+
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Add your form submission logic here
+        alert('Form submitted! (This is a placeholder - implement actual form submission)');
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+    });
+
+    // Check for saved theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
 });
