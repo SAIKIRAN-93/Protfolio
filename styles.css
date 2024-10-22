@@ -618,37 +618,40 @@ h2::after {
     }
 }
 
+/* Laptop screen fix */
 @media screen and (min-width: 769px) {
     .footer {
-        margin-left: -250px; /* Compensate for the sidebar width */
-        width: 100vw; /* Full viewport width */
-        position: relative; /* Needed for proper positioning */
+        margin-left: 0;
+        width: calc(100% - 250px); /* Adjust width to account for sidebar */
+        position: relative;
     }
     
     .footer-content {
-        max-width: calc(1200px - 250px); /* Adjust max-width to account for sidebar */
-        margin-left: calc(250px + 2rem); /* Align with main content */
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
     }
 }
 
+/* Larger screen adjustments */
 @media screen and (min-width: 1024px) {
     .footer {
         padding: 3rem 0;
-        margin-left: -250px; /* Maintain the sidebar compensation */
-        width: 100vw;
+        margin-left: 0;
+        width: calc(100% - 250px);
         position: relative;
     }
 
     .footer-content {
-        max-width: calc(1200px - 250px);
-        margin-left: calc(250px + 2rem);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
     }
     
     .social-link {
         padding: 0.875rem 1.5rem;
     }
 }
-
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
     :root {
