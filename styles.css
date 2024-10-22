@@ -546,61 +546,78 @@ h2::after {
 /* Footer Styles */
 /* Footer Styles */
 .footer {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: 3rem 1.5rem;
-    backdrop-filter: blur(10px);
+    background-color: rgba(30, 41, 59, 0.95);
+    color: white;
+    width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    padding: 24px 20px;
 }
 
-/* Social Links */
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
 .social-links {
     display: flex;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: 16px;
 }
 
 .social-link {
-    color: var(--text-color);
-    text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    text-decoration: none;
+    color: white;
     transition: all 0.3s ease;
-    background-color: var(--hover-bg-color);
 }
 
 .social-link:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #2563eb;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Styles */
-@media (min-width: 768px) {
-   .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-   }
-
-   .social-links {
-        flex-wrap: nowrap;
-   }
+.social-link svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
 }
 
-@media (min-width: 1024px) {
-   .footer {
-        padding: 4rem 2rem;
-   }
+.social-link:hover svg {
+    transform: scale(1.1);
+}
+
+.copyright {
+    font-size: 14px;
+    opacity: 0.8;
+    text-align: right;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 640px) {
+    .footer-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .copyright {
+        text-align: center;
+    }
 }
