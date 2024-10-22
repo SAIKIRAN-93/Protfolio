@@ -544,8 +544,9 @@ h2::after {
 /* Base Footer Styles */
 /* Base Footer Styles */
 /* Footer Styles */
+/* Footer Styles */
 .footer {
-    background-color: rgba(44, 62, 80, 0.95); /* Semi-transparent dark background */
+    background-color: var(--bg-color);
     color: var(--text-color);
     padding: 3rem 1.5rem;
     backdrop-filter: blur(10px);
@@ -576,11 +577,11 @@ h2::after {
     padding: 0.5rem 1rem;
     border-radius: 25px;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1); /* Light background for links */
+    background-color: var(--hover-bg-color); /* Light background for links */
 }
 
 .social-link:hover {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Change to primary color on hover */
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -589,7 +590,6 @@ h2::after {
 .copyright {
     text-align: center;
     padding-top: 2rem;
-    margin-top: 2rem;
 }
 
 /* Responsive Styles */
