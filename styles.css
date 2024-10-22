@@ -553,6 +553,8 @@ h2::after {
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
+    left: 0;
+    right: 0;
 }
 
 .footer-content {
@@ -570,7 +572,7 @@ h2::after {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    justify-content: center; /* This ensures links are centered */
+    justify-content: center;
     width: 100%;
 }
 
@@ -612,7 +614,7 @@ h2::after {
 /* Responsive Design for Footer */
 @media screen and (min-width: 640px) {
     .social-links {
-        justify-content: center; /* Keep links centered on all screen sizes */
+        justify-content: flex-start;
     }
 }
 
@@ -623,10 +625,11 @@ h2::after {
         align-items: center;
         gap: 2rem;
     }
+
     .social-links {
         width: auto;
-        justify-content: center; /* Keep links centered */
     }
+
     .copyright {
         width: auto;
         text-align: right;
@@ -637,6 +640,7 @@ h2::after {
     .footer {
         padding: 3rem 0;
     }
+
     .social-link {
         padding: 0.875rem 1.5rem;
     }
