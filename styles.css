@@ -549,7 +549,7 @@ h2::after {
     padding: 3rem 1.5rem;
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    position: absolute;
+    position: relative;
     overflow: hidden;
 }
 
