@@ -661,6 +661,56 @@ h2::after {
         max-width: 1600px; /* Further increased max-width for extra large screens */
     }
 }
+    /* Medium screen adjustments (including 1245x816) */
+@media screen and (min-width: 769px) and (max-width: 1245px) {
+    .footer {
+        margin-left: 250px;
+        width: 995px; /* Fixed width (1245px - 250px sidebar) */
+        position: relative;
+    }
+    
+    .footer-content {
+        max-width: 995px;
+        margin: 0 auto;
+        padding: 0 1.5rem; /* Reduced padding */
+    }
+}
+
+/* Height-specific adjustments */
+@media screen and (max-height: 816px) {
+    .footer {
+        padding: 1rem 0; /* Further reduced padding for shorter heights */
+    }
+    
+    .footer-content {
+        padding: 0 1rem;
+    }
+    
+    .social-link {
+        padding: 0.5rem 1rem; /* Reduced padding for social links */
+    }
+}
+
+/* Prevent overflow on smaller heights */
+@media screen and (max-height: 816px) and (min-width: 769px) {
+    .footer {
+        position: relative; /* Ensure footer doesn't cover content */
+        bottom: auto;
+    }
+}
+
+/* Ensure proper scaling for exact dimensions */
+@media screen and (width: 1245px) and (height: 816px) {
+    .footer {
+        width: 995px;
+        margin-left: 250px;
+    }
+    
+    .footer-content {
+        max-width: 995px;
+        padding: 0 1.5rem;
+    }
+}
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
     :root {
