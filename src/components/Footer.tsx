@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <footer className="w-full bg-slate-800/95 text-white mt-8 backdrop-blur border-t border-white/10">
       <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center">
+        <div className="flex flex-col lg:flex-row justify-between items-center">
           {/* Social Links */}
           <div className="flex flex-col sm:flex-row gap-4 mb-4 lg:mb-0">
             {socialLinks.map((link) => (
@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
           
           {/* Copyright */}
-          <p className="text-sm opacity-80 mt-4 lg:mt-0">
+          <p className="text-sm opacity-80 mt-4 lg:mt-0 text-center lg:text-left">
             &copy; {new Date().getFullYear()} Sai Kiran Annoju. All rights reserved.
           </p>
         </div>
