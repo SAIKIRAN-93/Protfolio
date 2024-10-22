@@ -691,24 +691,9 @@ h2::after {
     }
 }
 
-/* Prevent overflow on smaller heights */
-@media screen and (max-height: 816px) and (min-width: 769px) {
+@media screen and (min-width: 769px) {
     .footer {
-        position: relative; /* Ensure footer doesn't cover content */
-        bottom: auto;
-    }
-}
-
-/* Ensure proper scaling for exact dimensions */
-@media screen and (width: 1245px) and (height: 816px) {
-    .footer {
-        width: 995px;
-        margin-left: 250px;
-    }
-    
-    .footer-content {
-        max-width: 995px;
-        padding: 0 1.5rem;
+        display: none; /* Hides the footer */
     }
 }
 /* Dark mode support */
