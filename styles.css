@@ -18,9 +18,18 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     display: flex;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
+/* Content wrapper to handle sidebar offset */
+.content-wrapper {
+    flex: 1;
+    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 /* Particle.js container */
 #particles-js {
     position: fixed;
@@ -537,44 +546,24 @@ h2::after {
     }
   /* Main content wrapper adjustments */
 main {
-    margin-left: 250px;
-    padding: 2rem 2rem 100px 2rem; /* Added padding bottom for footer */
-    width: calc(100% - 250px);
+    flex: 1;
+    padding: 2rem;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    min-height: calc(100vh - 100px); /* Ensure content fills viewport minus footer */
+    margin-bottom: 2rem; /* Space for footer */
 }
 
-/* Footer styles */
+/* Updated footer styles */
 .footer {
     background-color: rgba(17, 25, 40, 0.95);
     color: #ffffff;
     padding: 2rem 0;
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    position: fixed; /* Changed to fixed */
-    bottom: 0;
-    left: 250px; /* Match sidebar width */
-    width: calc(100% - 250px); /* Match main content width */
-    z-index: 1000;
+    width: 100%;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    main {
-        margin-left: 0;
-        width: 100%;
-        padding: 2rem 2rem 100px 2rem;
-    }
-
-    .footer {
-        left: 0;
-        width: 100%;
-    }
-}
-
-/* Rest of the footer styles remain the same */
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -591,7 +580,51 @@ main {
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
+}
+
+.social-link {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover {
+    background-color: #2563eb;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 1rem;
+    }
+
+    .content-wrapper {
+        margin-left: 0;
+    }
+
+    main {
+        margin: 0;
+        width: 100%;
+    }
+
+    .footer {
+        margin-left: 0;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -603,7 +636,6 @@ main {
     }
 
     .social-links {
-        width: auto;
         justify-content: flex-start;
     }
 }
