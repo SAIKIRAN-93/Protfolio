@@ -21,8 +21,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-slate-800/95 text-white mt-8 backdrop-blur border-t border-white/10">
-      <div className="container mx-auto px-4 py-6">
+    <footer className="mt-8 w-full bg-slate-800/95 text-white backdrop-blur border-t border-white/10">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex flex-col lg:flex-row justify-between items-center">
           {/* Social Links */}
           <div className="flex flex-col sm:flex-row gap-4 mb-4 lg:mb-0">
