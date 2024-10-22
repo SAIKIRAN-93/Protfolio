@@ -549,16 +549,14 @@ footer {
         width: 100%;
         padding: 1rem;
     }
-   /* Add these styles to your existing CSS file */
+  /* Update these footer styles in your CSS */
 footer {
     text-align: center;
     padding: 1.5rem;
     background-color: rgba(44, 62, 80, 0.95);
     color: white;
-    position: fixed;
-    bottom: 0;
-    left: 250px;
-    right: 0;
+    margin-top: 2rem;
+    width: 100%;
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -605,12 +603,6 @@ footer {
     font-size: 0.9rem;
     opacity: 0.8;
 }
-
-@media (max-width: 768px) {
-    footer {
-        position: static;
-        left: 0;
-    }
     
     .social-links {
         flex-direction: column;
