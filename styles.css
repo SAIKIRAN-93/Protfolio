@@ -543,73 +543,28 @@ h2::after {
   /* Update these footer styles in your CSS */
 /* Base Footer Styles */
 /* Base Footer Styles */
-.footer {
-    background-color: rgba(44, 62, 80, 0.95);
-    color: white;
-    padding: 3rem 1.5rem;
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
+footer {
+  padding: 1rem; /* Adjust padding for mobile */
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+.container {
+  max-width: 1200px; /* Limit width for larger screens */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Social Links */
 .social-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column; /* Stack links on mobile */
 }
 
-.social-link {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
+@media (min-width: 640px) {
+  .social-links {
+    flex-direction: row; /* Align links in a row on larger screens */
+    justify-content: center; /* Center align */
+  }
 }
 
-.social-link:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Copyright */
-.copyright {
-    text-align: center;
-    padding-top: 2rem;
-    margin-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Tablet Responsive */
-@media (min-width: 768px) {
-   .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-   .social-links {
-        flex-wrap: nowrap;
-    }
-}
-
-/* Large Screen Responsive */
-@media (min-width: 1024px) {
-   .footer {
-        padding: 4rem 2rem;
-    }
+.text-center {
+  text-align: center; /* Center text for better mobile view */
 }
