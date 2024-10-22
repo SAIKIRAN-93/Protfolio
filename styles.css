@@ -634,8 +634,16 @@ h2::after {
 @media screen and (min-width: 1024px) {
     .footer {
         padding: 3rem 0;
+        margin-left: -250px; /* Maintain the sidebar compensation */
+        width: 100vw;
+        position: relative;
     }
 
+    .footer-content {
+        max-width: calc(1200px - 250px);
+        margin-left: calc(250px + 2rem);
+    }
+    
     .social-link {
         padding: 0.875rem 1.5rem;
     }
