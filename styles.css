@@ -18,18 +18,9 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     display: flex;
-    min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* Content wrapper to handle sidebar offset */
-.content-wrapper {
-    flex: 1;
-    margin-left: 250px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
 /* Particle.js container */
 #particles-js {
     position: fixed;
@@ -544,17 +535,17 @@ h2::after {
         position: static;
         padding: 1rem;
     }
-  /* Main content wrapper adjustments */
-main {
+   main {
     flex: 1;
+    margin: 0 auto; /* Changed from margin-left to center the content */
     padding: 2rem;
+    width: 100%; /* Changed from calc to full width */
+    max-width: 1200px; /* Added max-width for better readability */
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem; /* Space for footer */
 }
 
-/* Updated footer styles */
 .footer {
     background-color: rgba(17, 25, 40, 0.95);
     color: #ffffff;
@@ -562,6 +553,8 @@ main {
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
+    left: 0;
+    right: 0;
 }
 
 .footer-content {
@@ -580,6 +573,7 @@ main {
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 
 .social-link {
@@ -590,8 +584,14 @@ main {
     gap: 0.75rem;
     padding: 0.75rem 1.25rem;
     border-radius: 9999px;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-speed) ease;
+    background-color: var(--hover-bg-color);
+    font-weight: 500;
+}
+
+.social-link i {
+    font-size: 1.25rem;
+    transition: transform var(--transition-speed) ease;
 }
 
 .social-link:hover {
@@ -600,30 +600,21 @@ main {
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column;
-    }
+.social-link:hover i {
+    transform: scale(1.1) rotate(-5deg);
+}
 
-    #sidebar {
-        width: 100%;
-        height: auto;
-        position: static;
-        padding: 1rem;
-    }
+.copyright {
+    text-align: center;
+    font-size: 0.875rem;
+    opacity: 0.8;
+    width: 100%;
+}
 
-    .content-wrapper {
-        margin-left: 0;
-    }
-
-    main {
-        margin: 0;
-        width: 100%;
-    }
-
-    .footer {
-        margin-left: 0;
+/* Responsive Design for Footer */
+@media screen and (min-width: 640px) {
+    .social-links {
+        justify-content: flex-start;
     }
 }
 
@@ -636,6 +627,29 @@ main {
     }
 
     .social-links {
-        justify-content: flex-start;
+        width: auto;
+    }
+
+    .copyright {
+        width: auto;
+        text-align: right;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .footer {
+        padding: 3rem 0;
+    }
+
+    .social-link {
+        padding: 0.875rem 1.5rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: rgba(17, 25, 40, 0.98);
+        --hover-bg-color: rgba(255, 255, 255, 0.08);
     }
 }
