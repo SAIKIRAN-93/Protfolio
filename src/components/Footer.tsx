@@ -21,11 +21,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="ml-[250px] mt-8 w-[calc(100%-250px)] bg-slate-800/95 text-white backdrop-blur border-t border-white/10">
-      <div className="max-w-[1200px] mx-auto px-6 py-4">
+    <footer className="w-full bg-slate-800/95 text-white backdrop-blur border-t border-white/10">
+      <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           {/* Social Links */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap justify-center sm:justify-start gap-4">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
